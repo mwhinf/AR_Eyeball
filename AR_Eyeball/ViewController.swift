@@ -14,8 +14,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    var sceneController = HoverScene()
+    
+    var didInitializeScene: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.didTapScreen))
+        self.view.addGestureRecognizer(tapRecognizer)
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -24,10 +31,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
+        if let scene = sceneController.scene {
+            // Set the scene to the view
+            sceneView.scene = scene
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +54,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
+    
+    @objc func didTapScreen(recognizer: UITapGestureRecognizer) {
+        if didInitializeScene {
+        if let camera = sceneView.session.currentFrame?.camera {
+            let tapLocation = recognizer.location(in: sceneView)
+            let hitTestResults = sceneView.hitTest(tapLocation)
+            if let node = hitTestResults.first?.node, let scene = sceneController.scene, let sphere = node.topmost(until: scene.rootNode) as? Sphere {
+                sphere.animate()
+            }
+            else {
+                var translation = matrix_identity_float4x4
+                translation.columns.3.z = -150.0
+                let transform = camera.transform * translation
+                let position = SCNVector3(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
+                sceneController.addSphere(position: position)
+            }
+        }
+    }
+    }
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -71,5 +97,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if let camera = sceneView.session.currentFrame?.camera {
+            didInitializeScene = true
+            let transform = camera.transform
+            let position = SCNVector3(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
+            sceneController.makeUpdateCameraPos(towards: position)
+        }
     }
 }

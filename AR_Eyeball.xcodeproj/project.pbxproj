@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53570E502267A5A6005C43FA /* SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53570E4F2267A5A6005C43FA /* SceneObject.swift */; };
 		53E792772267022A004862E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E792762267022A004862E4 /* AppDelegate.swift */; };
 		53E792792267022A004862E4 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E792782267022A004862E4 /* art.scnassets */; };
 		53E7927B2267022A004862E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E7927A2267022A004862E4 /* ViewController.swift */; };
@@ -15,6 +16,8 @@
 		53E792832267022F004862E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E792812267022F004862E4 /* LaunchScreen.storyboard */; };
 		53E7928E2267022F004862E4 /* AR_EyeballTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E7928D2267022F004862E4 /* AR_EyeballTests.swift */; };
 		53E792992267022F004862E4 /* AR_EyeballUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E792982267022F004862E4 /* AR_EyeballUITests.swift */; };
+		53E792AB226703F3004862E4 /* HoverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E792AA226703F3004862E4 /* HoverScene.swift */; };
+		53E792AE22670499004862E4 /* Node+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E792AD22670499004862E4 /* Node+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		53570E4F2267A5A6005C43FA /* SceneObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneObject.swift; sourceTree = "<group>"; };
 		53E792732267022A004862E4 /* AR_Eyeball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Eyeball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E792762267022A004862E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E792782267022A004862E4 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		53E792942267022F004862E4 /* AR_EyeballUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AR_EyeballUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E792982267022F004862E4 /* AR_EyeballUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR_EyeballUITests.swift; sourceTree = "<group>"; };
 		53E7929A2267022F004862E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53E792AA226703F3004862E4 /* HoverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverScene.swift; sourceTree = "<group>"; };
+		53E792AD22670499004862E4 /* Node+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Node+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53570E4E2267A585005C43FA /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				53570E4F2267A5A6005C43FA /* SceneObject.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		53E7926A2267022A004862E4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +113,10 @@
 		53E792752267022A004862E4 /* AR_Eyeball */ = {
 			isa = PBXGroup;
 			children = (
+				53570E4E2267A585005C43FA /* Objects */,
+				53E792AC22670481004862E4 /* Utilities */,
+				53E792A9226703D8004862E4 /* Scenes */,
+				53E792A6226702DA004862E4 /* Models */,
 				53E792762267022A004862E4 /* AppDelegate.swift */,
 				53E792782267022A004862E4 /* art.scnassets */,
 				53E7927A2267022A004862E4 /* ViewController.swift */,
@@ -126,6 +144,29 @@
 				53E7929A2267022F004862E4 /* Info.plist */,
 			);
 			path = AR_EyeballUITests;
+			sourceTree = "<group>";
+		};
+		53E792A6226702DA004862E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		53E792A9226703D8004862E4 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				53E792AA226703F3004862E4 /* HoverScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		53E792AC22670481004862E4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				53E792AD22670499004862E4 /* Node+Extensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +301,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E792AB226703F3004862E4 /* HoverScene.swift in Sources */,
+				53570E502267A5A6005C43FA /* SceneObject.swift in Sources */,
+				53E792AE22670499004862E4 /* Node+Extensions.swift in Sources */,
 				53E7927B2267022A004862E4 /* ViewController.swift in Sources */,
 				53E792772267022A004862E4 /* AppDelegate.swift in Sources */,
 			);
